@@ -1,0 +1,18 @@
+.container {
+	padding: 30px;
+	color: #fff;
+	font-size: 25px;
+}
+body {
+	background-color: #545353;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 15px 60px;
+}
+span > .bage {
+	height: 100px;
+	width: auto;
+}
+#js-resultsTableElement .row .col-xs-5 .badge {
+    font-size: 25px;
+}
