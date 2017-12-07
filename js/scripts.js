@@ -39,13 +39,17 @@ function setGameElements() {
       pickElem.style.display = 'block';
       resultsElem.style.display = 'block';
       winnerName.style.display = 'none';
+      playerResultElem.style.color = '#fff';
+      computerResultElem.style.color = '#fff';
       break;
     case 'ended':
+      winnerName.style.display = 'block';
       newGameBtn.innerText = 'Jeszcze raz';
       playerPickElem.innerHTML = "Player selection";
       computerPickElem.innerHTML = "Computer selection";
       playerResultElem.innerHTML = "Player Score";
       computerResultElem.innerHTML = "Computer Score";
+
     case 'notStarted':
     default:
       newGameElem.style.display = 'block';
@@ -78,7 +82,7 @@ function newGame() {
 
 function getComputerPick() {
   var possiblePicks = ['rock', 'paper', 'scissors'];
-  return possiblePicks[Math.floor(Math.random()*3)];
+  return possiblePicks[Math.floor(Math.random() * 3)];
 }
 
 var playerPickElem = document.getElementById('js-playerPick'),
@@ -102,10 +106,8 @@ function checkRoundWinner(playerPick, computerPick) {
     winnerIs = 'noone';//remis
     playerResultElem.innerHTML = "Draw!"; 
     computerResultElem.innerHTML = "Draw!";
-    if (winnerIs = 'noone') {
-        playerResultElem.style.color = '#31b0d5';
-        computerResultElem.style.color = '#31b0d5';
-    } 
+    playerResultElem.style.color = '#31b0d5';
+    computerResultElem.style.color = '#31b0d5';
 
   } else if (
     (computerPick == 'rock' &&  playerPick == 'scissors') ||
@@ -115,15 +117,11 @@ function checkRoundWinner(playerPick, computerPick) {
   }
   if (winnerIs == 'player') {
     playerResultElem.innerHTML = "Win!";
-    if (winnerIs == 'player') {
-      playerResultElem.style.color = '#449D44';
-    } 
+    playerResultElem.style.color = '#449D44';
     player.score++;
   } else if (winnerIs == 'computer') {
     computerResultElem.innerHTML = "Win!";
-      if (winnerIs == 'computer') {
-        computerResultElem.style.color = '#C9302C';
-      }  
+    computerResultElem.style.color = '#C9302C';
     computer.score++;
   }
   setGamePoints();
@@ -151,12 +149,10 @@ function setGamePoints() {
 
 function isTenPoints() {
   if (player.score === 10) {
-    winnerName.style.display = 'block';
     winnerName.innerHTML = "The Winner is: " + player.name;
     gameState = 'ended';
     setGameElements();
   } else if (computer.score === 10) {
-    winnerName.style.display = 'block';
     winnerName.innerHTML = "The Winner is: Computer";
     gameState = 'ended';
     setGameElements();
